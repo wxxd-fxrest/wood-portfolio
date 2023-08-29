@@ -1,15 +1,17 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { startColors } from './colors';
 import Intro from './components/Intro';
 import Project from './components/Project';
 import Start from './components/Start';
+import { RiGithubFill, RiNotionFill } from 'react-icons/ri';
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const sections = [
-        { id: 'Start', color: '#dc322f' },
-        { id: 'Intro', color: '#268bd2' },
-        { id: 'Project', color: '#073642' },
+        { id: 'Start', color: startColors.backGroundColor },
+        { id: 'Intro', color: '#c0bfe1' },
+        { id: 'Project', color: '#eaecf6' },
     ];
     const containerRef = useRef();
 
@@ -25,14 +27,14 @@ const App = () => {
     const handleScroll = useCallback((e) => {
         const delta = e.deltaY;
         const newPageIndex = currentPage + (delta > 0 ? 1 : -1);
-    
+
         if (newPageIndex >= 0 && newPageIndex < sections.length) {
             setCurrentPage(newPageIndex);
             scrollToSection(newPageIndex);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
-    
+
     useEffect(() => {
         const container = containerRef.current;
         const scrollHandler = (e) => handleScroll(e);
@@ -54,6 +56,18 @@ const App = () => {
                     {section.id === 'Start' && <Start />}
                     {section.id === 'Intro' && <Intro />}
                     {section.id === 'Project' && <Project />}
+                    {section.id === 'Start' && (
+                        <ButtonWrapper>
+                            <GitHubBtn>
+                                <RiGithubFill size={30} />
+                                <GitHubText>github</GitHubText>
+                            </GitHubBtn>
+                            <NotionBtn>
+                                <RiNotionFill size={30} />
+                                <NotionText> notion </NotionText>
+                            </NotionBtn>
+                        </ButtonWrapper>
+                    )}
                 </Section>
             ))}
         </Container>
@@ -70,6 +84,13 @@ const Container = styled.div`
     scrollbar-width: none;
     -ms-overflow-style: none;
     cursor: pointer;
+    
+    /* 스크롤바 숨기기 */
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 const Section = styled.div`
@@ -82,11 +103,44 @@ const Section = styled.div`
     transition: background-color 0.3s;
 
     background-color: ${({ color }) => color};
-    
-    h1 {
-        color: white;
-        font-size: 3rem;
+`;
+
+const ButtonWrapper = styled.div`
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    display: flex;
+    gap: 10px;
+`;
+
+const RoundButton = styled.button`
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+    /* padding: 5px 10px; */
+    padding: 10px 18px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
+`;
+
+const GitHubBtn = styled(RoundButton)``;
+
+const NotionBtn = styled(RoundButton)``;
+
+const GitHubText = styled.h1`
+    font-size: 12px;
+    font-weight: 100;
+`;
+
+const NotionText = styled.h1`
+    font-size: 12px;
+    font-weight: 100;
 `;
 
 export default App;

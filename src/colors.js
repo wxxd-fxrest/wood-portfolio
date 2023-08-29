@@ -1,6 +1,4 @@
-export const colors = {
-    textColor: "#AFBED0",
-    textPointColor: "#959D33",
-    headerColor: "#2D4421",
-    pointColor: "#BDCEB3",
+export const startColors = {
+    backGroundColor: '#293241',
+    textColor: '#FF6B6B',
 };

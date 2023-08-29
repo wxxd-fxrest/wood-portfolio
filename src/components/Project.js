@@ -1,12 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import mumbleIMG from '../../src/assets/mumble-mumble.png';
+import movieBuddyIMG from '../../src/assets/movie-buddy.png';
+import askIMG from '../../src/assets/Ask logo.png';
+import { RiGithubFill, RiNotionFill } from 'react-icons/ri';
+import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 
 const Project = () => {
     const projectData = [
-        { bgColor: 'skyblue', name: 'Project-1' },
-        { bgColor: 'pink', name: 'Project-2' },
-        { bgColor: 'lightgreen', name: 'Project-3' },
-        // ... 추가 프로젝트 데이터
+        { 
+            name: 'mumble-mumble',
+            img: mumbleIMG,
+            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
+            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
+            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+        },
+        { 
+            name: 'movie-buddy',
+            img: movieBuddyIMG,
+            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
+            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
+            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+        },
+        { 
+            name: 'Project-3',
+            img: askIMG,
+            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
+            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
+            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+        },
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,16 +43,40 @@ const Project = () => {
         );
     };
 
+    const handleGithubClick = () => {
+        window.open(projectData[currentIndex].github, '_blank');
+    };
+
+    const handleNotionClick = () => {
+        window.open(projectData[currentIndex].notion, '_blank');
+    };
+
     return (
-        <Container>
-            <ProjectBox style={{ backgroundColor: projectData[currentIndex].bgColor }}>
-                <ProjectImg />
+        <Container style={{ backgroundColor: 'white' }}>
+            <ProjectBox>
+                <ProjectImg img={projectData[currentIndex].img} />
                 <ProjectName>{projectData[currentIndex].name}</ProjectName>
+
+                <ProjectButton>
+                    <ProjectGithub onClick={handleGithubClick}>
+                        <RiGithubFill />
+                    </ProjectGithub>
+                    <ProjectNotion onClick={handleNotionClick}>
+                        <RiNotionFill />
+                    </ProjectNotion>
+                </ProjectButton>
             </ProjectBox>
+
             <ControlButtons>
-                <BeforeBtn onClick={handlePrevClick}>이전</BeforeBtn>
-                <AfterBtn onClick={handleNextClick}>다음</AfterBtn>
+                <BeforeBtn onClick={handlePrevClick}>
+                    <BiSolidLeftArrow size={30}/>
+                </BeforeBtn>
+
+                <AfterBtn onClick={handleNextClick}>
+                    <BiSolidRightArrow size={30}/>
+                </AfterBtn>
             </ControlButtons>
+
             <Dots>
                 {projectData.map((_, index) => (
                     <Dot key={index} active={index === currentIndex} onClick={() => setCurrentIndex(index)} />
@@ -41,25 +87,39 @@ const Project = () => {
 };
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const ProjectBox = styled.div`
-    width: 300px;
-    height: 200px;
+    width: 100vw; /* 뷰포트 너비 100%로 설정 */
+    height: 100vh; /* 뷰포트 높이 100%로 설정 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 `;
 
+const ProjectBox = styled.div`
+    background-color: rgba(41, 50, 65, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    transition: transform 0.2s ease; /* 호버 시 약간의 애니메이션 효과 추가 */
+`;
+
 const ProjectImg = styled.div`
-    width: 100px;
-    height: 100px;
-    background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 60%;
+    height: 40%;
+    background-image: url(${props => props.img});
+    background-size: contain; /* 이미지가 가로 및 세로 중 하나의 방향으로 가득 차도록 설정 */
+    background-position: center;
+    background-repeat: no-repeat;
     margin-bottom: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
 `;
 
 const ProjectName = styled.h1`
@@ -67,20 +127,36 @@ const ProjectName = styled.h1`
     text-align: center;
 `;
 
+const ProjectButton = styled.div``;
+
+const ProjectGithub = styled.div``;
+
+const ProjectNotion = styled.div``;
+
 const ControlButtons = styled.div`
     display: flex;
+    justify-content: space-between; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
     margin-top: 10px;
+    width: 70%;
+    position: absolute;
 `;
 
 const BeforeBtn = styled.button`
-    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 `;
 
-const AfterBtn = styled.button``;
+const AfterBtn = styled.button`
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+`;
 
 const Dots = styled.div`
     display: flex;
-    margin-top: 10px;
+    margin-top: 30px;
 `;
 
 const Dot = styled.div`
@@ -88,114 +164,9 @@ const Dot = styled.div`
     height: 10px;
     background-color: ${({ active }) => (active ? "#000" : "#ccc")};
     border-radius: 50%;
-    margin: 0 5px;
+    margin: 0 10px;
     cursor: pointer;
 `;
 
+
 export default Project;
-
-
-// import React, { useState } from 'react';
-// import styled from 'styled-components';
-
-// const Project = () => {
-//     const projectData = [
-//         { bgColor: 'skyblue', name: 'Project-1' },
-//         { bgColor: 'pink', name: 'Project-2' },
-//         { bgColor: 'lightgreen', name: 'Project-3' },
-//         { bgColor: 'lightblue', name: 'Project-4' },
-//         { bgColor: 'orange', name: 'Project-5' },
-//         { bgColor: 'purple', name: 'Project-6' },
-
-//         { bgColor: 'skyblue', name: 'Project-7' },
-//         { bgColor: 'pink', name: 'Project-8' },
-//         { bgColor: 'lightgreen', name: 'Project-9' },
-//         { bgColor: 'lightblue', name: 'Project-10' },
-//         { bgColor: 'orange', name: 'Project-11' },
-//         { bgColor: 'purple', name: 'Project-12' },
-//     ];
-
-//     const itemsPerPage = 3; // 한 페이지에 보여질 아이템 개수
-//     const [currentPage, setCurrentPage] = useState(0);
-
-//     const handleNextClick = () => {
-//         setCurrentPage((prevPage) => prevPage + 1);
-//     };
-
-//     const handlePrevClick = () => {
-//         setCurrentPage((prevPage) => prevPage - 1);
-//     };
-
-//     const startIndex = currentPage * itemsPerPage;
-//     const visibleItems = projectData.slice(startIndex, startIndex + itemsPerPage);
-
-//     return (
-//         <Container>
-//             <ProjectBoxWrapper>
-//                 {visibleItems.map((item, index) => (
-//                     <ProjectBox key={index} style={{ backgroundColor: item.bgColor }}>
-//                         <ProjectImg />
-//                         <ProjectName>{item.name}</ProjectName>
-//                     </ProjectBox>
-//                 ))}
-//             </ProjectBoxWrapper>
-//             <ButtonWrapper>
-//                 <BeforeBtn onClick={handlePrevClick} disabled={currentPage === 0}>
-//                     이전
-//                 </BeforeBtn>
-//                 <AfterBtn
-//                     onClick={handleNextClick}
-//                     disabled={startIndex + itemsPerPage >= projectData.length}
-//                 >
-//                     다음
-//                 </AfterBtn>
-//             </ButtonWrapper>
-//         </Container>
-//     );
-// };
-
-// const Container = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-// `;
-
-// const ProjectBoxWrapper = styled.div`
-//     display: flex;
-//     overflow-x: auto;
-// `;
-
-// const ProjectBox = styled.div`
-//     width: 300px;
-//     height: 200px;
-//     margin: 0 10px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     justify-content: center;
-// `;
-
-// const ProjectImg = styled.div`
-//     width: 100px;
-//     height: 100px;
-//     background-color: #ccc;
-//     margin-bottom: 10px;
-// `;
-
-// const ProjectName = styled.h1`
-//     font-size: 1rem;
-//     text-align: center;
-// `;
-
-// const ButtonWrapper = styled.div`
-//     display: flex;
-//     margin-top: 10px;
-// `;
-
-// const BeforeBtn = styled.button`
-//     margin-right: 10px;
-// `;
-
-// const AfterBtn = styled.button``;
-
-// export default Project;
