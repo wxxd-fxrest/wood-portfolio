@@ -8,11 +8,21 @@ import { RiGithubFill, RiNotionFill } from 'react-icons/ri';
 
 const App = () => {
     const [currentPage, setCurrentPage] = useState(0);
+    const [currentIndex] = useState(0); 
+    
+    const projectData = [
+        { 
+            github: process.env.REACT_APP_GITHUB,
+            notion: process.env.REACT_APP_NOTION, 
+        },
+    ];
+
     const sections = [
         { id: 'Start', color: startColors.backGroundColor },
         { id: 'Intro', color: '#c0bfe1' },
         { id: 'Project', color: '#eaecf6' },
     ];
+
     const containerRef = useRef();
 
     const scrollToSection = (index) => {
@@ -39,10 +49,19 @@ const App = () => {
         const container = containerRef.current;
         const scrollHandler = (e) => handleScroll(e);
         container.addEventListener('wheel', scrollHandler);
+        
         return () => {
             container.removeEventListener('wheel', scrollHandler);
         };
     }, [handleScroll]);
+
+    const handleGithubClick = () => {
+        window.open(projectData[currentIndex].github, '_blank');
+    };
+
+    const handleNotionClick = () => {
+        window.open(projectData[currentIndex].notion, '_blank');
+    };
 
     return (
         <Container ref={containerRef}>
@@ -58,11 +77,11 @@ const App = () => {
                     {section.id === 'Project' && <Project />}
                     {section.id === 'Start' && (
                         <ButtonWrapper>
-                            <GitHubBtn>
+                            <GitHubBtn onClick={handleGithubClick}>
                                 <RiGithubFill size={30} />
                                 <GitHubText>github</GitHubText>
                             </GitHubBtn>
-                            <NotionBtn>
+                            <NotionBtn onClick={handleNotionClick}>
                                 <RiNotionFill size={30} />
                                 <NotionText> notion </NotionText>
                             </NotionBtn>
@@ -83,7 +102,6 @@ const Container = styled.div`
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    cursor: pointer;
     
     /* 스크롤바 숨기기 */
     -ms-overflow-style: none; /* 인터넷 익스플로러 */

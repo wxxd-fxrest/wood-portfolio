@@ -1,4 +1,4 @@
 export const startColors = {
-    backGroundColor: '#293241',
+    backGroundColor: '#243e35',
     textColor: '#FF6B6B',
 };

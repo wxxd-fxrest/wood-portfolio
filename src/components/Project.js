@@ -11,23 +11,23 @@ const Project = () => {
         { 
             name: 'mumble-mumble',
             img: mumbleIMG,
-            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
-            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
-            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+            url: process.env.REACT_APP_MUMBLE_URL,
+            notion: process.env.REACT_APP_MUMBLE_NOTION,
+            github: process.env.REACT_APP_MUMBLE_GITHU,
         },
         { 
             name: 'movie-buddy',
             img: movieBuddyIMG,
-            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
-            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
-            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+            url: process.env.REACT_APP_MUMBLE_URL,
+            notion: process.env.REACT_APP_MUMBLE_NOTION,
+            github: process.env.REACT_APP_MUMBLE_GITHU,
         },
         { 
             name: 'Project-3',
             img: askIMG,
-            url: 'https://wxxd-fxrest.github.io/wood-forest-MumbleMumble/auth',
-            notion: 'https://puffy-poinsettia-b48.notion.site/wood-forest-MumbleTrash-8b4b2adfd8bb477fa8bffc9ab37ba887', 
-            github: 'https://github.com/wxxd-fxrest/wood-forest-MumbleMumble',
+            url: process.env.REACT_APP_MUMBLE_URL,
+            notion: process.env.REACT_APP_MUMBLE_NOTION,
+            github: process.env.REACT_APP_MUMBLE_GITHU,
         },
     ];
 
@@ -52,7 +52,7 @@ const Project = () => {
     };
 
     return (
-        <Container style={{ backgroundColor: 'white' }}>
+        <Container>
             <ProjectBox>
                 <ProjectImg img={projectData[currentIndex].img} />
                 <ProjectName>{projectData[currentIndex].name}</ProjectName>
@@ -69,11 +69,11 @@ const Project = () => {
 
             <ControlButtons>
                 <BeforeBtn onClick={handlePrevClick}>
-                    <BiSolidLeftArrow size={30}/>
+                    <LeftArrow />
                 </BeforeBtn>
 
                 <AfterBtn onClick={handleNextClick}>
-                    <BiSolidRightArrow size={30}/>
+                    <RightArrow />
                 </AfterBtn>
             </ControlButtons>
 
@@ -87,8 +87,9 @@ const Project = () => {
 };
 
 const Container = styled.div`
-    width: 100vw; /* 뷰포트 너비 100%로 설정 */
-    height: 100vh; /* 뷰포트 높이 100%로 설정 */
+    background: linear-gradient(5deg, #c1ccc8, #3E606F);
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,29 +97,35 @@ const Container = styled.div`
 `;
 
 const ProjectBox = styled.div`
-    background-color: rgba(41, 50, 65, 0.8);
+    background-color: rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    height: 80%;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    transition: transform 0.2s ease; /* 호버 시 약간의 애니메이션 효과 추가 */
+    width: 500px; /* 원하는 너비 값으로 설정 */
+    height: 75%;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    @media (max-width: 620px) {
+        width: 400px; 
+    }
+    @media (max-width: 450px) {
+        width: 300px; 
+    }
 `;
 
 const ProjectImg = styled.div`
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 60%;
-    height: 40%;
+    background-color: rgba(178, 235, 244, 0.7);
+    width: 80%;
+    height: 28%;
     background-image: url(${props => props.img});
     background-size: contain; /* 이미지가 가로 및 세로 중 하나의 방향으로 가득 차도록 설정 */
     background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: 10px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    border-radius: 20px;
+    margin-top: 10%;
+    margin-bottom: 15%;
+    border-radius: 100px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
 `;
 
@@ -138,20 +145,54 @@ const ControlButtons = styled.div`
     justify-content: space-between; /* 수평 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     margin-top: 10px;
-    width: 70%;
+    width: 600px; 
     position: absolute;
+    transition: transform 0.2s ease;
+
+    @media (max-width: 620px) {
+        width: 390px; 
+    }
+    @media (max-width: 450px) {
+        width: 300px; 
+    }
 `;
 
 const BeforeBtn = styled.button`
     border: none;
     background-color: transparent;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 `;
 
 const AfterBtn = styled.button`
     border: none;
     background-color: transparent;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+`;
+
+const LeftArrow = styled(BiSolidLeftArrow)`
+    width: 30px;
+    height: 30px;
+    color: #243e35;
+
+    &:hover {
+        color: #f91300;
+    }
+`;
+
+const RightArrow = styled(BiSolidRightArrow)`
+    width: 30px;
+    height: 30px;
+    color: #243e35;
+
+    &:hover {
+        color: #f91300;
+    }
 `;
 
 const Dots = styled.div`
@@ -162,7 +203,7 @@ const Dots = styled.div`
 const Dot = styled.div`
     width: 10px;
     height: 10px;
-    background-color: ${({ active }) => (active ? "#000" : "#ccc")};
+    background-color: ${({ active }) => (active ? "#243e35" : "#c1ccc8")};
     border-radius: 50%;
     margin: 0 10px;
     cursor: pointer;
