@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wood-portfolio/static/css/main.90f6920e.css",
+    "main.js": "/wood-portfolio/static/js/main.ec1c870d.js",
+    "static/media/mumble-mumble.png": "/wood-portfolio/static/media/mumble-mumble.82e3bf81613510f6cc98.png",
+    "static/media/profile.png": "/wood-portfolio/static/media/profile.b60c4c975f673f52af34.png",
+    "static/media/movie-buddy.png": "/wood-portfolio/static/media/movie-buddy.9ed30ac58fc45ca4b9d7.png",
+    "index.html": "/wood-portfolio/index.html",
+    "main.90f6920e.css.map": "/wood-portfolio/static/css/main.90f6920e.css.map",
+    "main.ec1c870d.js.map": "/wood-portfolio/static/js/main.ec1c870d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90f6920e.css",
+    "static/js/main.ec1c870d.js"
+  ]
+}
