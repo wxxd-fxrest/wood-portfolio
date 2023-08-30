@@ -19,8 +19,8 @@ const App = () => {
 
     const sections = [
         { id: 'Start', color: startColors.backGroundColor },
-        { id: 'Intro', color: '#c0bfe1' },
-        { id: 'Project', color: '#eaecf6' },
+        { id: 'Project', color: startColors.backGroundColor },
+        { id: 'Intro', color: '#c1ccc8' },
     ];
 
     const containerRef = useRef();
@@ -49,7 +49,7 @@ const App = () => {
         const container = containerRef.current;
         const scrollHandler = (e) => handleScroll(e);
         container.addEventListener('wheel', scrollHandler);
-        
+
         return () => {
             container.removeEventListener('wheel', scrollHandler);
         };
@@ -73,8 +73,8 @@ const App = () => {
                     color={section.color}
                 >
                     {section.id === 'Start' && <Start />}
-                    {section.id === 'Intro' && <Intro />}
                     {section.id === 'Project' && <Project />}
+                    {section.id === 'Intro' && <Intro />}
                     {section.id === 'Start' && (
                         <ButtonWrapper>
                             <GitHubBtn onClick={handleGithubClick}>
