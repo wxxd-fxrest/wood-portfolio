@@ -94,18 +94,18 @@ const Project = () => {
                         Skill Set 
                     </ProjectSkillText>
                     <ProjectSkill>
-                        <BsDot />
+                        <SkillDot />
                         {projectData[currentIndex].skill}
                     </ProjectSkill>
 
                     <ProjectDataBase>
-                        <BsDot />
+                        <SkillDot />
                         {projectData[currentIndex].database_api}
                     </ProjectDataBase>
 
                     {projectData[currentIndex].styleSkill && 
                         <ProjectStyleSkill>
-                            <BsDot />
+                            <SkillDot />
                             {projectData[currentIndex].styleSkill}
                         </ProjectStyleSkill>
                     }
@@ -234,7 +234,7 @@ const ProjectApp = styled.h1`
 `;
 
 const ProjectDate = styled.h1`
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     font-weight: 100;
     text-align: center;
     color: #EAEAEA;
@@ -249,14 +249,20 @@ const ProjectSkillBox = styled.div`
     margin-top: 3%;
 `;
 
+const SkillDot = styled(BsDot)`
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0; /* 방지하기 위한 속성 추가 */
+`;
+
 const ProjectText = styled.h1`
     color: white;
     font-size: 16px;
     font-weight: 500;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 `;
 
 const ProjectSkillText = styled(ProjectText)`
@@ -267,7 +273,7 @@ const ProjectSkillText = styled(ProjectText)`
 
 const SkillIcon = styled(GiSkills)`
     margin-right: 5px;
-    margin-bottom: 5px;
+    padding-bottom: 5px;
     color: #243e35;
 `;
 
