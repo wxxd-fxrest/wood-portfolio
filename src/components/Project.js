@@ -336,6 +336,7 @@ const Empty = styled.div`
     background-color: #243e35;
     margin-left: 10px;
     margin-right: 10px;
+    margin: 10px;
 
     @media (max-width: 550px) {
         display: none;
@@ -469,7 +470,7 @@ const RoundButton = styled.button`
     color: white;
     cursor: pointer;
     border-radius: 50px;
-    padding: 10px 18px;
+    padding: 8px 15px;
     transition: background-color 0.3s;
     z-index: 10;
 
@@ -525,6 +526,8 @@ const AfterBtn = styled.button`
     justify-content: center;
     align-items: center;
     display: flex;
+    border-radius: 50%;
+    padding: 3px 3px;
 `;
 
 const LeftArrow = styled(BiSolidLeftArrow)`
