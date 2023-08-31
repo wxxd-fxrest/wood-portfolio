@@ -144,6 +144,7 @@ const Project = () => {
 };
 
 const Container = styled.div`
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: linear-gradient(0deg, #c1ccc8, #243e35 99%);
     width: 100vw;
     height: 100vh;

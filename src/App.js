@@ -78,11 +78,11 @@ const App = () => {
                     {section.id === 'Start' && (
                         <ButtonWrapper>
                             <GitHubBtn onClick={handleGithubClick}>
-                                <RiGithubFill size={30} />
+                                <GitHub />
                                 <GitHubText>github</GitHubText>
                             </GitHubBtn>
                             <NotionBtn onClick={handleNotionClick}>
-                                <RiNotionFill size={30} />
+                                <Notion />
                                 <NotionText> notion </NotionText>
                             </NotionBtn>
                         </ButtonWrapper>
@@ -125,8 +125,8 @@ const Section = styled.div`
 
 const ButtonWrapper = styled.div`
     position: absolute;
-    bottom: 30px;
-    right: 50px;
+    bottom: 5%;
+    right: 8%;
     display: flex;
     gap: 10px;
 `;
@@ -138,12 +138,15 @@ const RoundButton = styled.button`
     color: white;
     cursor: pointer;
     border-radius: 50px;
-    /* padding: 5px 10px; */
     padding: 10px 18px;
     transition: background-color 0.3s;
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        padding: 5px 13px;
     }
 `;
 
@@ -151,14 +154,44 @@ const GitHubBtn = styled(RoundButton)``;
 
 const NotionBtn = styled(RoundButton)``;
 
+const GitHub = styled(RiGithubFill)`
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s;
+
+    @media (max-width: 768px) {
+        width: 30px;
+        height: 30px;
+    }
+`;
+
+const Notion = styled(RiNotionFill)`
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s;
+
+    @media (max-width: 768px) {
+        width: 30px;
+        height: 30px;
+    }
+`;
+
 const GitHubText = styled.h1`
     font-size: 12px;
     font-weight: 100;
+
+    @media (max-width: 768px) {
+        font-size: 10px;
+    }
 `;
 
 const NotionText = styled.h1`
     font-size: 12px;
     font-weight: 100;
+
+    @media (max-width: 768px) {
+        font-size: 10px;
+    }
 `;
 
 export default App;
