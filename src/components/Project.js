@@ -16,13 +16,13 @@ const Project = () => {
             name: 'Ask & Answer',
             standard: '개인 프로젝트',
             app: 'web / app(ios only)',
-            date: '2023년 8월 18일 → 2023년 8월 28일 (약 10일)',
+            date: '2023년 8월 18일 → 2023년 8월 28일',
             skill: 'React | React Native | Expo',
             styleSkill: 'styled-components | React Icon | Expo Icon',
             database_api: 'Firebase',
             img: askIMG,
             imgBgColor: '#2b4743',
-            info: '이 프로젝트의 주요 목적은 사용자들에게 익명성을 제공하면서 자유롭게 질문하고 응답할 수 있는 플랫폼을 제공하는 것입니다. 사용자들은 개인 정보 노출 없이 질문, 고민, 의견 등을 공유하고 다른 사용자들로부터 익명으로 질문 할 수 있습니다. 이를 통해 솔직하고 오픈한 의사소통이 가능해집니다.',
+            info: '이 프로젝트는 익명으로 자유롭게 질문, 응답이 가능하도록 했으며 사용자들은 개인 정보에 대한 노출 없이 질문, 고민, 의견을 공유할 수 있습니다. 이를 통해 솔직하고 개방적인 의사소통이 가능하도록 했습니다.',
             url: process.env.REACT_APP_MUMBLE_URL,
             notion: process.env.REACT_APP_MUMBLE_NOTION,
             github: process.env.REACT_APP_MUMBLE_GITHUB,
@@ -31,13 +31,13 @@ const Project = () => {
             name: 'Movie Buddy',
             standard: '개인 프로젝트',
             app: 'app(ios only)',
-            date: '2023년 8월 7일 → 2023년 8월 17일 (약 10일)',
+            date: '2023년 8월 7일 → 2023년 8월 17일',
             skill: 'React Native | React Query | React Navigation',
             styleSkill: 'styled-components | Expo Icon',
             database_api: 'Firebase | TMDB(Api)',
             img: movieBuddyIMG,
             imgBgColor: '#1e242b',
-            info: '사용자가 시청한 영화에 대한 개인적인 평점과 리뷰를 기록하고 관리할 수 있는 플랫폼입니다. 사용자들은 자신만의 영화에 대한 생각을 일기처럼 작성할 수 있으며, 달마다 영화 관람의 목표치를 설정할 수 있는 공간을 제공합니다. 각 영화에 대한 자기 자신만의 특별하고 다양한 표현을 기록, 그에 대한 추억을 남길 수 있게 하고자 했습니다. ',
+            info: '이 프로젝트는 사용자가 시청한 영화에 대한 평점, 리뷰를 기록하고 관리하는 공간을 제공합니다. 자신만의 영화에 대한 생각을 기록하며 영화 관람의 목표치를 설정할 수 있으며, 각 영화에 대한 추억을 보관하는 공간입니다.',
             notion: process.env.REACT_APP_MUMBLE_NOTION,
             github: process.env.REACT_APP_MUMBLE_GITHUB,
         },
@@ -45,12 +45,12 @@ const Project = () => {
             name: 'MUMBLE',
             standard: '팀 프로젝트',
             app: 'web',
-            date: '2023년 4월 2일 → 2023년 5월 11일 (약 4주)',
+            date: '2023년 4월 2일 → 2023년 5월 11일',
             skill: 'React',
             database_api: 'Firebase | Last.fm(Api)',
             img: mumbleIMG,
             imgBgColor: '#f8f7f1',
-            info: '현대사회에서 사람들은 많은 감정들을 느끼며 하루를 보냅니다. 많은 감정들 중 힘들거나 말하기 어려웠던 감정을 털어낼 수 있는 일기장을 만들고, 쓰레기통이라는 콘셉트를 부여하여 부정적인 감정을 버리고 해소할 수 있는 애플리케이션을 만들고자 했습니다.',
+            info: '현대사회에서 여러 감정들을 느끼며 하루를 보내는 사람들을 위해, 어려운 감정을 털어낼 수 있는 공간입니다. 쓰레기통 컨셉을 활용하여 부정적인 감정을 조금이나마 해소할 수 있기를 바라며 해당 프로젝트를 구현했습니다.',
             url: process.env.REACT_APP_MUMBLE_URL,
             notion: process.env.REACT_APP_MUMBLE_NOTION,
             github: process.env.REACT_APP_MUMBLE_GITHUB,
@@ -86,7 +86,7 @@ const Project = () => {
                 />
                 {projectData[currentIndex].url && <>
                     <LinkIcon />
-                    <LinkText> 로고 사진 클릭 시 해당 웹사이트로 이동합니다. </LinkText>
+                    <LinkText> 로고 클릭시 웹사이트로 이동합니다 </LinkText>
                 </>}
                 <ProjectStandard>{projectData[currentIndex].standard}</ProjectStandard>
                 <ProjectTitle>
@@ -186,11 +186,10 @@ const ProjectBox = styled.div`
 
     @media (max-width: 620px) {
         width: 400px; 
-        height: 80%;
+        height: 77%;
     }
     @media (max-width: 450px) {
-        width: 300px; 
-        height: 90%;
+        width: 320px; 
     }
 `;
 
@@ -319,6 +318,7 @@ const ProjectBodyBox = styled.div`
         align-items: center;
         justify-content: flex-start;
         overflow: scroll;
+        width: 75%;
         height: 40%;
         padding: 5px 0px;
 
@@ -505,7 +505,7 @@ const ControlButtons = styled.div`
         width: 390px; 
     }
     @media (max-width: 450px) {
-        width: 300px; 
+        width: 320px; 
     }
 `;
 
