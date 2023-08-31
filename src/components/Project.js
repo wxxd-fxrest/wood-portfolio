@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import mumbleIMG from '../../src/assets/Mumble-Logo.gif';
 import askIMG from '../../src/assets/Ask-Logo.gif';
 import movieBuddyIMG from '../../src/assets/movie-buddy.png';
@@ -8,6 +8,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 import { BsDot } from 'react-icons/bs';
 import { GiSkills } from 'react-icons/gi';
 import { FaTag } from 'react-icons/fa';
+import { AiOutlineLink } from 'react-icons/ai';
 
 const Project = () => {
     const projectData = [
@@ -15,7 +16,7 @@ const Project = () => {
             name: 'Ask & Answer',
             standard: '개인 프로젝트',
             app: 'web / app(ios only)',
-            date: '2023년 8월 18일 → 2023년 8월 28일',
+            date: '2023년 8월 18일 → 2023년 8월 28일 (약 10일)',
             skill: 'React | React Native | Expo',
             styleSkill: 'styled-components | React Icon | Expo Icon',
             database_api: 'Firebase',
@@ -30,14 +31,13 @@ const Project = () => {
             name: 'Movie Buddy',
             standard: '개인 프로젝트',
             app: 'app(ios only)',
-            date: '2023년 8월 7일 → 2023년 8월 17일',
+            date: '2023년 8월 7일 → 2023년 8월 17일 (약 10일)',
             skill: 'React Native | React Query | React Navigation',
             styleSkill: 'styled-components | Expo Icon',
             database_api: 'Firebase | TMDB(Api)',
             img: movieBuddyIMG,
             imgBgColor: '#1e242b',
             info: '사용자가 시청한 영화에 대한 개인적인 평점과 리뷰를 기록하고 관리할 수 있는 플랫폼입니다. 사용자들은 자신만의 영화에 대한 생각을 일기처럼 작성할 수 있으며, 달마다 영화 관람의 목표치를 설정할 수 있는 공간을 제공합니다. 각 영화에 대한 자기 자신만의 특별하고 다양한 표현을 기록, 그에 대한 추억을 남길 수 있게 하고자 했습니다. ',
-            url: process.env.REACT_APP_MUMBLE_URL,
             notion: process.env.REACT_APP_MUMBLE_NOTION,
             github: process.env.REACT_APP_MUMBLE_GITHUB,
         },
@@ -45,7 +45,7 @@ const Project = () => {
             name: 'MUMBLE',
             standard: '팀 프로젝트',
             app: 'web',
-            date: '2023년 4월 2일 → 2023년 5월 11일',
+            date: '2023년 4월 2일 → 2023년 5월 11일 (약 4주)',
             skill: 'React',
             database_api: 'Firebase | Last.fm(Api)',
             img: mumbleIMG,
@@ -84,6 +84,10 @@ const Project = () => {
                     img={projectData[currentIndex].img} 
                     color={projectData[currentIndex].imgBgColor}
                 />
+                {projectData[currentIndex].url && <>
+                    <LinkIcon />
+                    <LinkText> 로고 사진 클릭 시 해당 웹사이트로 이동합니다. </LinkText>
+                </>}
                 <ProjectStandard>{projectData[currentIndex].standard}</ProjectStandard>
                 <ProjectTitle>
                     <ProjectName>{projectData[currentIndex].name}</ProjectName>
@@ -119,7 +123,7 @@ const Project = () => {
                     <ProjectInfo>
                         <InfoHeader>
                             <InfoIcon /> 
-                            <InfoTitle> Info </InfoTitle>
+                            <InfoTitle> Introduction </InfoTitle>
                         </InfoHeader>
                         <InfoText>  {projectData[currentIndex].info} </InfoText>
                     </ProjectInfo>
@@ -202,6 +206,46 @@ const ProjectImg = styled.div`
     margin-bottom: 6%;
     border-radius: 100px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    @media (max-width: 620px) {
+        margin-top: 15%;
+        height: 25%;
+    }
+    @media (max-width: 450px) {
+        height: 20%;
+    }
+`;
+
+const LinkIcon = styled(AiOutlineLink)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+`;
+
+const slideInAnimation = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
+const LinkText = styled.h1`
+    position: absolute;
+    top: 15px;
+    right: 33px;
+    color: white;
+    font-size: 10px;
+    font-weight: 100;
+    animation: ${slideInAnimation} 1s forwards; 
 `;
 
 const ProjectStandard = styled.h1`
