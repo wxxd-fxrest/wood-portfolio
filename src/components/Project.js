@@ -186,7 +186,7 @@ const ProjectBox = styled.div`
 
     @media (max-width: 620px) {
         width: 400px; 
-        height: 77%;
+        /* height: 77%; */
     }
     @media (max-width: 450px) {
         width: 320px; 
@@ -220,8 +220,8 @@ const ProjectImg = styled.div`
 
 const LinkIcon = styled(AiOutlineLink)`
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     color: rgba(255, 255, 255, 0.7);
     font-size: 20px;
 `;
@@ -239,8 +239,8 @@ const slideInAnimation = keyframes`
 
 const LinkText = styled.h1`
     position: absolute;
-    top: 15px;
-    right: 33px;
+    top: 20px;
+    right: 40px;
     color: white;
     font-size: 10px;
     font-weight: 100;
@@ -320,7 +320,7 @@ const ProjectBodyBox = styled.div`
         overflow: scroll;
         width: 75%;
         height: 40%;
-        padding: 5px 0px;
+        margin-top: 3%;
 
         /* 스크롤바 숨기기 */
         -ms-overflow-style: none; /* 인터넷 익스플로러 */
