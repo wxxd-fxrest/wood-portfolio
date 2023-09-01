@@ -55,7 +55,7 @@ const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 35px 0px;
+    margin: 20px 0px;
 `;
 
 const InfoBox = styled.div`

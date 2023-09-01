@@ -88,7 +88,7 @@ const Container = styled.div`
     width: 100%;
     display: flex;
     transition: background-color 0.3s;
-    padding: 0px 70px;
+    padding: 0px 10%;
     position: relative;
     transition: transform 0.2s ease;
 
@@ -134,15 +134,16 @@ const InfoBox = styled.div`
 `;
 
 const InfoLeftBox = styled.div`
+    /* background-color: yellowgreen; */
     margin: 50px 30px;
-    padding: 30px;
+    padding: 60px 40px;
+    margin-right: 10px;
     align-items: center;
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s;
 
     @media (max-width: 1151px) {
-        /* background-color: green; */
         margin: 20px 30px;
     }
 `;
@@ -150,6 +151,7 @@ const InfoLeftBox = styled.div`
 const InfoEmpty = styled.div`
     width: 5%;
     transition: transform 0.2s ease;
+    /* background-color: yellowgreen; */
 
     @media (max-width: 1150px) {
         display: none;
@@ -157,13 +159,11 @@ const InfoEmpty = styled.div`
 `;
 
 const InfoRightBox = styled.div`
-    /* background-color: wheat; */
-    /* border: 1px solid #ddd; */
+    /* background-color: yellowgreen; */
     border-radius: 5px;
-    /* margin: 20px; */
-    margin: 80px 30px;
-    padding: 30px 80px;
-    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+    margin: 50px 30px;
+    padding: 60px 80px;
+    margin-left: 10px;
     transition: transform 0.2s ease;
 
     @media (max-width: 1151px) {
