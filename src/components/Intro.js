@@ -90,6 +90,8 @@ const Container = styled.div`
     position: relative;
     transition: background-color 0.3s;
     transition: transform 0.2s ease;
+    justify-content: center;
+    align-items: center;
 
     @media (max-width: 1151px) {
         justify-content: center;
