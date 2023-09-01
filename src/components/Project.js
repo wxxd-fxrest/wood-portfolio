@@ -517,6 +517,8 @@ const BeforeBtn = styled.button`
     justify-content: center;
     align-items: center;
     display: flex;
+    border-radius: 50%;
+    padding: 3px 3px;
 `;
 
 const AfterBtn = styled.button`
