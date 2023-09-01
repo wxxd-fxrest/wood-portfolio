@@ -179,6 +179,7 @@ const ControlButtons = styled.div`
     align-items: center;
     position: absolute;
     width: 80%;
+    
     @media (max-width: 850px) {
         width: 90%; 
     }
