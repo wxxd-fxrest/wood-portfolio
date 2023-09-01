@@ -83,7 +83,6 @@ const Intro = () => {
 };
 
 const Container = styled.div`
-    background-color: aliceblue;
     height: 100%;
     width: 100%;
     display: flex;
@@ -92,15 +91,9 @@ const Container = styled.div`
     transition: background-color 0.3s;
     transition: transform 0.2s ease;
 
-    @media (max-width: 1030px) {
-        padding: 0px 5%; /* 여기서 padding을 %로 변경 */
-    }
-
-    @media (max-width: 850px) {
-        padding: 0px 2%; /* 여기서 padding을 %로 변경 */
-    }
-    @media (max-width: 850px) {
-        padding: 0px 2%; /* 여기서 padding을 %로 변경 */
+    @media (max-width: 1151px) {
+        justify-content: center;
+        align-items: center;
     }
 `;
 
@@ -114,7 +107,6 @@ const InfoBox = styled.div`
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        /* width: 80%; */
     }
 
     @media (max-width: 996px) {
@@ -122,29 +114,11 @@ const InfoBox = styled.div`
         justify-content: center;
         align-items: center;
     }
-
-    @media (max-width: 450px) {
-        /* width: 80%; */
-    }
 `;
 
 const InfoLeftBox = styled.div`
-    /* background-color: yellowgreen;
     margin: 50px 30px;
-    padding: 60px 40px;
-    margin-right: 10px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    transition: background-color 0.3s;
-
-    @media (max-width: 1151px) {
-        margin: 0px 30px;
-    } */
-
-    background-color: yellowgreen;
-    margin: 50px 30px;
-    padding: 60px 40px;
+    padding: 5% 40px;
     margin-right: 1%;
     align-items: center;
     display: flex;
@@ -152,14 +126,14 @@ const InfoLeftBox = styled.div`
     transition: background-color 0.3s;
 
     @media (max-width: 1151px) {
-        margin: 0% 3%; /* 여기서 margin과 padding을 %로 변경 */
+        margin: 0% 3%; 
     }
 `;
 
 const InfoEmpty = styled.div`
     width: 5%;
     transition: transform 0.2s ease;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
 
     @media (max-width: 1151px) {
         display: none;
@@ -167,45 +141,51 @@ const InfoEmpty = styled.div`
 `;
 
 const InfoRightBox = styled.div`
-    background-color: yellowgreen;
-    margin: 50px 30px;
-    padding: 60px 40px;
+    width: 100%;
+    margin: 0px 30px;
+    padding: 0px 40px;
     margin-left: 10px;
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     @media (max-width: 1320px) {
-        padding: 2% 4%; /* 여기서 margin과 padding을 %로 변경 */
+        padding: 7% 4%; 
     }
 
     @media (max-width: 1135px) {
-        padding: 0% 4%; /* 여기서 margin과 padding을 %로 변경 */
+        padding: 0% 4%; 
     }
 
     @media (max-width: 996px) {
-        margin: 0% 3%; /* 여기서 margin과 padding을 %로 변경 */
-        width: 70%;
+        margin: 0% 3%; 
+        /* width: 70%; */
+        /* margin-left: 0px; */
     }
 
     @media (max-width: 665px) {
-        margin: 0% 0%; /* 여기서 margin과 padding을 %로 변경 */
-        width: 80%;
+        margin: 0% 0px; 
+        /* width: 80%; */
     }
 `;
 
 const ControlButtons = styled.div`
+    flex-direction: row;
     display: flex;
-    justify-content: space-between; /* 수평 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-    width: 75%; 
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
-    transition: transform 0.3s ease; /* left 속성에 대한 트랜지션 추가 */
-
+    width: 80%;
     @media (max-width: 850px) {
-        width: 80%; 
+        width: 90%; 
     }
 
-    @media (max-width: 665px) {
+    @media (max-width: 620px) {
         width: 90%; 
+    }
+    @media (max-width: 450px) {
+        width: 95%; 
     }
 `;
 
