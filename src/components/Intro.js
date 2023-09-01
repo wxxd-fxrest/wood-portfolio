@@ -88,7 +88,7 @@ const Container = styled.div`
     width: 100%;
     display: flex;
     transition: background-color 0.3s;
-    padding: 0px 10%;
+    padding: 0px 150px;
     position: relative;
     transition: transform 0.2s ease;
 
@@ -162,20 +162,24 @@ const InfoRightBox = styled.div`
     /* background-color: yellowgreen; */
     border-radius: 5px;
     margin: 50px 30px;
-    padding: 60px 80px;
+    padding: 60px 40px;
     margin-left: 10px;
     transition: transform 0.2s ease;
 
-    @media (max-width: 1151px) {
+    @media (max-width: 1320px) {
+        padding: 30px 40px;
+    }
+
+    @media (max-width: 1180px) {
         /* width: 60%; */
-        margin: 0px;
+        /* margin: 0px; */
         margin-right: 30px;
         padding: 30px 0px;
     }
 
     @media (max-width: 1135px) {
         margin-right: 30px;
-        padding: 15px 0px;
+        padding: 0px;
     }
 
     @media (max-width: 996px) {
@@ -201,7 +205,7 @@ const ControlButtons = styled.div`
         width: 80%; 
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 665px) {
         width: 90%; 
     }
 `;
