@@ -242,7 +242,7 @@ const LinkText = styled.h1`
     top: 20px;
     right: 40px;
     color: white;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 100;
     animation: ${slideInAnimation} 1s forwards; 
 `;
@@ -333,7 +333,7 @@ const ProjectBodyBox = styled.div`
 
 const Empty = styled.div`
     width: 0.1%;
-    background-color: #243e35;
+    background-color: white;
     margin-left: 10px;
     margin-right: 10px;
     margin: 10px;
@@ -389,7 +389,7 @@ const InfoTitle = styled.h1`
 const InfoText = styled.p`
     color: white;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 18px;
     font-weight: 100;
     display: flex;
     align-items: center;
@@ -562,7 +562,7 @@ const Dot = styled.div`
     height: 10px;
     border-radius: 50%;
     background-color: ${({ active }) => (active ? "#243e35" : "#c1ccc8")};
-    margin: 0 10px;
+    margin: 0px 10px;
     cursor: pointer;
 `;
 

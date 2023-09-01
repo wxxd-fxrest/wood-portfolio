@@ -181,7 +181,7 @@ const ControlButtons = styled.div`
     width: 80%;
     
     @media (max-width: 850px) {
-        width: 90%; 
+        width: 80%; 
     }
 
     @media (max-width: 620px) {
@@ -241,7 +241,7 @@ const IndicatorContainer = styled.div`
     /* margin-top: 20px; */
     z-index: 100;
     position: absolute;
-    bottom: 30px;
+    bottom: 60px;
 
     @media (max-width: 996px) {
         /* display: none; */

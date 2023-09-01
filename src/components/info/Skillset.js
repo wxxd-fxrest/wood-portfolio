@@ -51,7 +51,6 @@ const SkillTitle = styled.h1`
     font-weight: bold;
     color: #2d4f43;
     margin: 10px 0px;
-    align-items: center;
 
     @media (max-width: 1135px) {
         margin: 5px 0px;
@@ -80,10 +79,10 @@ const SkillTree = styled.div`
         padding: 20px 20px;
     }
     @media (max-width: 1025px) {
-        padding: 30px 20px;
+        padding: 20px 10px;
     }
     @media (max-width: 768px) {
-        padding: 30px 10px;
+        padding: 30px 20px;
     }
 `;
 
