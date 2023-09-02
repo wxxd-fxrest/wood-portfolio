@@ -184,17 +184,15 @@ const ProjectBox = styled.div`
     transition: transform 0.3s ease;
     position: relative;
 
-    @media (min-height: 866px) {
+    @media (min-height: 800px) {
         width: 500px;
-        height: 65%;
+        height: 61%;
     }
-
     @media (max-width: 620px) {
         width: 400px; 
-        /* height: 77%; */
     }
     @media (max-width: 450px) {
-        width: 320px; 
+        width: 340px; 
     }
 `;
 
@@ -324,6 +322,10 @@ const ProjectBodyBox = styled.div`
     margin-top: 3.5%;
     transition: background-color 0.3s;
 
+    @media (min-height: 800px) {
+        width: 500px;
+        height: 61%;
+    }
     @media (max-width: 550px) {
         flex-direction: column;
         align-items: center;
@@ -339,10 +341,10 @@ const ProjectBodyBox = styled.div`
         &::-webkit-scrollbar {
             display: none;
         }
-
-        @media (max-width: 450px) {
-            height: 43%;
-        }
+    }
+    @media (max-width: 450px) {
+        width: 73%;
+        height: 42%;
     }
 `;
 
