@@ -186,7 +186,7 @@ const ProjectBox = styled.div`
 
     @media (min-height: 800px) {
         width: 500px;
-        height: 61%;
+        height: 63%;
     }
     @media (max-width: 620px) {
         width: 400px; 
@@ -211,12 +211,13 @@ const ProjectImg = styled.div`
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
-
+    
     @media (max-width: 620px) {
         margin-top: 15%;
         height: 25%;
     }
     @media (max-width: 450px) {
+        margin-top: 13%;
         height: 20%;
     }
 `;
@@ -295,10 +296,6 @@ const ProjectApp = styled.h1`
     text-align: center;
     color: #EAEAEA;
     opacity: 0.7;
-
-    @media (max-width: 550px) {
-        /* margin-bottom: 5px; */
-    }
 `;
 
 const ProjectDate = styled.h1`
