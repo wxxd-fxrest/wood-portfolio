@@ -145,9 +145,20 @@ const Section = styled.div`
 const ButtonWrapper = styled.div`
     position: absolute;
     bottom: 5%;
-    left: 11%;
+    left: 13%;
     display: flex;
     gap: 10px;
+
+    @media (min-width: 1900px) {
+        left: 18%;
+    }
+
+    @media (max-width: 1200px) {
+        left: 9%;
+    }
+    @media (max-width: 768px) {
+        left: 5%;
+    }
 `;
 
 const RoundButton = styled.button`
