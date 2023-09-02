@@ -184,7 +184,7 @@ const ProjectBox = styled.div`
     transition: transform 0.3s ease;
     position: relative;
 
-    @media (min-height: 953px) {
+    @media (min-height: 866px) {
         width: 500px;
         height: 65%;
     }
