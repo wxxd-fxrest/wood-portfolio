@@ -98,10 +98,10 @@ const Project = () => {
 
                 <ProjectBodyBox>
                     <ProjectSkillBox>
-                        <ProjectSkillText>
+                        <SkillInfoHeader>
                             <SkillIcon />
                             Skill Set 
-                        </ProjectSkillText>
+                        </SkillInfoHeader>
                         <ProjectSkill>
                             <SkillDot />
                             {projectData[currentIndex].skill}
@@ -121,21 +121,21 @@ const Project = () => {
                     </ProjectSkillBox>
                     <Empty />
                     <ProjectInfo>
-                        <InfoHeader>
+                        <SkillInfoHeader>
                             <InfoIcon /> 
                             <InfoTitle> Introduction </InfoTitle>
-                        </InfoHeader>
+                        </SkillInfoHeader>
                         <InfoText>  {projectData[currentIndex].info} </InfoText>
                     </ProjectInfo>
                 </ProjectBodyBox>
 
                 <ButtonWrapper>
                     <GitHubBtn onClick={handleGithubClick}>
-                        <RiGithubFill size={30} />
+                        <RiGithubFill />
                         <GitHubText>github</GitHubText>
                     </GitHubBtn>
                     <NotionBtn onClick={handleNotionClick}>
-                        <RiNotionFill size={30} />
+                        <RiNotionFill />
                         <NotionText> notion </NotionText>
                     </NotionBtn>
                 </ButtonWrapper>
@@ -177,12 +177,17 @@ const ProjectBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px; /* 원하는 너비 값으로 설정 */
+    width: 450px; /* 원하는 너비 값으로 설정 */
     height: 75%;
     border-radius: 30px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative;
+
+    @media (min-height: 953px) {
+        width: 500px;
+        height: 65%;
+    }
 
     @media (max-width: 620px) {
         width: 400px; 
@@ -252,13 +257,18 @@ const ProjectStandard = styled.h1`
     font-weight: 100;
     text-align: center;
     color: #EAEAEA;
-    margin-bottom: 1.5%;
+    margin-bottom: 2%;
+
+    @media (max-width: 550px) {
+        margin-bottom: 1%;
+    }
 `;
 
 const ProjectTitle = styled.div`
     flex-direction: row;
     display: flex;
     align-items: center;
+    margin-top: 1%;
 
     @media (max-width: 550px) {
         flex-direction: column;
@@ -298,6 +308,7 @@ const ProjectDate = styled.h1`
     font-weight: 100;
     text-align: center;
     color: #EAEAEA;
+    margin-bottom: 1%;
 
     @media (max-width: 550px) {
         display: none;
@@ -310,7 +321,7 @@ const ProjectBodyBox = styled.div`
     height: 30%;
     display: flex;
     justify-content: space-between;
-    margin-top: 5%;
+    margin-top: 3.5%;
     transition: background-color 0.3s;
 
     @media (max-width: 550px) {
@@ -319,7 +330,7 @@ const ProjectBodyBox = styled.div`
         justify-content: flex-start;
         overflow: scroll;
         width: 75%;
-        height: 40%;
+        height: 35%;
         margin-top: 3%;
 
         /* 스크롤바 숨기기 */
@@ -327,6 +338,10 @@ const ProjectBodyBox = styled.div`
         scrollbar-width: none; /* 파이어폭스 */
         &::-webkit-scrollbar {
             display: none;
+        }
+
+        @media (max-width: 450px) {
+            height: 43%;
         }
     }
 `;
@@ -355,13 +370,14 @@ const ProjectInfo = styled.div`
 `;
 
 const InfoHeader = styled.div`
+    background-color: yellowgreen;
     color: white;
     font-size: 13.5px;
     font-weight: 300;
     display: flex;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
 `;
 
 const InfoIcon = styled(FaTag)`
@@ -429,13 +445,15 @@ const ProjectText = styled.h1`
     margin-bottom: 2%;
 `;
 
-const ProjectSkillText = styled(ProjectText)`
+const SkillInfoHeader = styled(ProjectText)`
     font-size: 18px;
     font-weight: bold;
     align-items: center;
+    margin: 3% 0px;
 
     @media (max-width: 550px) {
         font-size: 16px;
+        margin: 2% 0px;
     }
 `;
 
@@ -471,26 +489,46 @@ const RoundButton = styled.button`
     cursor: pointer;
     border-radius: 50px;
     padding: 8px 15px;
-    transition: background-color 0.3s;
     z-index: 10;
+    transition: background-color 0.3s;
+    transition: transform 0.3s ease;
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
+
+    @media (max-width: 450px) {
+        padding: 5px;
+        display: flex;
+    }
 `;
 
-const GitHubBtn = styled(RoundButton)``;
+const GitHubBtn = styled(RoundButton)`
+    font-size: 30px;
+`;
 
-const NotionBtn = styled(RoundButton)``;
+const NotionBtn = styled(RoundButton)`
+    font-size: 30px;
+`;
 
 const GitHubText = styled.h1`
     font-size: 10px;
     font-weight: 100;
+    transition: transform 0.3s ease;
+
+    @media (max-width: 450px) {
+        display: none;
+    }
 `;
 
 const NotionText = styled.h1`
     font-size: 10px;
     font-weight: 100;
+    transition: transform 0.3s ease;
+
+    @media (max-width: 450px) {
+        display: none;
+    }
 `;
 
 const ControlButtons = styled.div`
