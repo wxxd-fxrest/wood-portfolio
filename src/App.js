@@ -1,19 +1,32 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { startColors } from './colors';
 import Intro from './components/Intro';
 import Project from './components/Project';
 import Start from './components/Start';
 import { RiGithubFill, RiNotionFill } from 'react-icons/ri';
 
+const scaleAnimation = keyframes`
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2); /* 크기 확대 */
+    }
+    100% {
+        transform: scale(1);
+    }
+`;
+
+
 const App = () => {
     const [currentPage, setCurrentPage] = useState(0);
-    const [currentIndex] = useState(0); 
-    
+    const [currentIndex] = useState(0);
+
     const projectData = [
-        { 
+        {
             github: process.env.REACT_APP_GITHUB,
-            notion: process.env.REACT_APP_NOTION, 
+            notion: process.env.REACT_APP_NOTION,
         },
     ];
 
@@ -85,6 +98,12 @@ const App = () => {
                                 <Notion />
                                 <NotionText> notion </NotionText>
                             </NotionBtn>
+                            <ScrollHint  currentPage={currentPage}>
+                                <a href="#!" style={{textDecorationLine: 'none'}}>
+                                    <span></span>
+                                </a>
+                                {/* <ScrollText> scroll </ScrollText> */}
+                            </ScrollHint>
                         </ButtonWrapper>
                     )}
                 </Section>
@@ -102,7 +121,7 @@ const Container = styled.div`
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    
+
     /* 스크롤바 숨기기 */
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
@@ -126,7 +145,7 @@ const Section = styled.div`
 const ButtonWrapper = styled.div`
     position: absolute;
     bottom: 5%;
-    right: 8%;
+    left: 11%;
     display: flex;
     gap: 10px;
 `;
@@ -176,7 +195,7 @@ const Notion = styled(RiNotionFill)`
     }
 `;
 
-const GitHubText = styled.h1`
+const GitHubText = styled.p`
     font-size: 12px;
     font-weight: 100;
 
@@ -185,7 +204,7 @@ const GitHubText = styled.h1`
     }
 `;
 
-const NotionText = styled.h1`
+const NotionText = styled.p`
     font-size: 12px;
     font-weight: 100;
 
@@ -193,5 +212,81 @@ const NotionText = styled.h1`
         font-size: 10px;
     }
 `;
+
+const ScrollHint = styled.div`
+    position: fixed;
+    bottom: 7%;
+    right: 12%;
+    font-size: 1rem;
+    color: white;
+    opacity: ${({ currentPage }) => (currentPage === 0 ? '0.5' : '0')};
+    transition: opacity 0.3s;
+
+    a {
+        padding-top: 40px;
+        display: flex;
+        align-items: center; /* 세로 중앙 정렬을 위해 추가 */
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: -20px; /* 가운데 정렬을 위해 마진 수정 */
+            border: 1px solid #fff;
+            border-radius: 100%;
+            box-sizing: border-box;
+            animation: ${scaleAnimation} 2s infinite; /* 원형 확대/축소 애니메이션 적용 */
+
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                content: '';
+                width: 11px;
+                height: 11px;
+                margin: -6px 0 0 -5.5px;
+                border-left: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                transform: rotate(-45deg);
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {        
+        a {
+            padding-top: 30px;
+            
+            span {
+                width: 30px;
+                height: 30px;
+
+                &::after {
+                    width: 10px;
+                    height: 10px;
+                    margin: -5px 0 0 -5px;
+                }
+            }
+        }
+    }
+`;
+
+// const ScrollText = styled.p`
+//     font-size: 12px;
+//     font-weight: bold;
+//     color: white;
+//     display: flex; /* 텍스트를 가로, 세로 중앙에 정렬하기 위해 추가 */
+//     justify-content: center; /* 가로 중앙 정렬을 위해 추가 */
+//     align-items: center; /* 세로 중앙 정렬을 위해 추가 */
+
+//     @media (max-width: 768px) {        
+//         font-size: 10px; 
+//         margin-left: -2px;
+//     }
+// `;
+
 
 export default App;
