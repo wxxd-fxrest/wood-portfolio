@@ -154,10 +154,10 @@ const ButtonWrapper = styled.div`
     }
 
     @media (max-width: 1200px) {
-        left: 9%;
+        left: 11%;
     }
     @media (max-width: 768px) {
-        left: 5%;
+        left: 9%;
     }
 `;
 
