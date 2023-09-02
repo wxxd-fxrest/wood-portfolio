@@ -368,17 +368,6 @@ const ProjectInfo = styled.div`
     }
 `;
 
-const InfoHeader = styled.div`
-    background-color: yellowgreen;
-    color: white;
-    font-size: 13.5px;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 4%;
-`;
-
 const InfoIcon = styled(FaTag)`
     margin-right: 5px;
     padding-bottom: 5px;
@@ -543,7 +532,7 @@ const ControlButtons = styled.div`
         width: 390px; 
     }
     @media (max-width: 450px) {
-        width: 320px; 
+        width: 340px; 
     }
 `;
 
