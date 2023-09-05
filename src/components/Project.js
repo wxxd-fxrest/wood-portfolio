@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import mumbleIMG from '../../src/assets/Mumble-Logo.gif';
 import askIMG from '../../src/assets/Ask-Logo.gif';
 import movieBuddyIMG from '../../src/assets/movie-buddy.png';
+import PingIMG from '../../src/assets/PingLogo.gif';
 import { RiGithubFill, RiNotionFill } from 'react-icons/ri';
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 import { BsDot } from 'react-icons/bs';
@@ -23,9 +24,9 @@ const Project = () => {
             img: askIMG,
             imgBgColor: '#2b4743',
             info: '이 프로젝트는 익명으로 자유롭게 질문, 응답이 가능하도록 했으며 사용자들은 개인 정보에 대한 노출 없이 질문, 고민, 의견을 공유할 수 있습니다. 이를 통해 솔직하고 개방적인 의사소통이 가능하도록 했습니다.',
-            url: process.env.REACT_APP_MUMBLE_URL,
-            notion: process.env.REACT_APP_MUMBLE_NOTION,
-            github: process.env.REACT_APP_MUMBLE_GITHUB,
+            url: process.env.REACT_APP_ASK_URL,
+            notion: process.env.REACT_APP_ASK_NOTION,
+            github: process.env.REACT_APP_ASK_GITHUB,
         },
         { 
             name: 'Movie Buddy',
@@ -38,15 +39,15 @@ const Project = () => {
             img: movieBuddyIMG,
             imgBgColor: '#1e242b',
             info: '이 프로젝트는 사용자가 시청한 영화에 대한 평점, 리뷰를 기록하고 관리하는 공간을 제공합니다. 자신만의 영화에 대한 생각을 기록하며 영화 관람의 목표치를 설정할 수 있으며, 각 영화에 대한 추억을 보관하는 공간입니다.',
-            notion: process.env.REACT_APP_MUMBLE_NOTION,
-            github: process.env.REACT_APP_MUMBLE_GITHUB,
+            notion: process.env.REACT_APP_MOVIE_NOTION,
+            github: process.env.REACT_APP_MOVIE_GITHUB,
         },
         { 
             name: 'MUMBLE',
             standard: '팀 프로젝트',
             app: 'web',
             date: '2023년 4월 2일 → 2023년 5월 11일',
-            skill: 'React',
+            skill: 'React, React Router Dom',
             database_api: 'Firebase | Last.fm(Api)',
             img: mumbleIMG,
             imgBgColor: '#f8f7f1',
@@ -54,6 +55,20 @@ const Project = () => {
             url: process.env.REACT_APP_MUMBLE_URL,
             notion: process.env.REACT_APP_MUMBLE_NOTION,
             github: process.env.REACT_APP_MUMBLE_GITHUB,
+        },
+        { 
+            name: 'Ping Travel',
+            standard: '개인 프로젝트',
+            app: 'web',
+            date: '2023년 7월 2일 → 2023년 7월 26일',
+            skill: 'React, React Router Dom',
+            database_api: 'Firebase | Kakao Map',
+            img: PingIMG,
+            imgBgColor: '#ff8f4c',
+            info: '이 웹사이트는 여행 계획 및 기록 관리를 지원하며, 지도를 활용한 목적지 선택과 일정 작성이 가능합니다. 또한, 친구와 함께 계획을 협력하고 완료된 여행을 기록으로 저장하여 공유합니다.',
+            url: process.env.REACT_APP_PING_URL,
+            notion: process.env.REACT_APP_PING_NOTION,
+            github: process.env.REACT_APP_PING_GITHUB,
         },
     ];
 
@@ -67,6 +82,14 @@ const Project = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === 0 ? projectData.length - 1 : prevIndex - 1
         );
+    };
+
+    const handleSiteClick = () => {
+        if(projectData[currentIndex].url) {
+            window.open(projectData[currentIndex].url, '_blank');
+        } else if(!projectData[currentIndex].url) {
+            alert('해당 프로젝트는 App으로 제작되어 URL링크가 제공되지 않습니다.')
+        }
     };
 
     const handleGithubClick = () => {
@@ -83,18 +106,19 @@ const Project = () => {
                 <ProjectImg 
                     img={projectData[currentIndex].img} 
                     color={projectData[currentIndex].imgBgColor}
+                    onClick={handleSiteClick}
                 />
                 {projectData[currentIndex].url && <>
                     <LinkIcon />
                     <LinkText> 로고 클릭시 웹사이트로 이동합니다 </LinkText>
                 </>}
-                <ProjectStandard>{projectData[currentIndex].standard}</ProjectStandard>
+                <ProjectStandard><span>{projectData[currentIndex].standard}</span></ProjectStandard>
                 <ProjectTitle>
-                    <ProjectName>{projectData[currentIndex].name}</ProjectName>
-                    <ProjectApp>{projectData[currentIndex].app}</ProjectApp>
+                    <ProjectName><span>{projectData[currentIndex].name}</span></ProjectName>
+                    <ProjectApp><span>{projectData[currentIndex].app}</span></ProjectApp>
                 </ProjectTitle>
 
-                <ProjectDate>{projectData[currentIndex].date}</ProjectDate>
+                <ProjectDate><span>{projectData[currentIndex].date}</span></ProjectDate>
 
                 <ProjectBodyBox>
                     <ProjectSkillBox>
@@ -380,7 +404,7 @@ const InfoIcon = styled(FaTag)`
     }
 `;
 
-const InfoTitle = styled.h1`
+const InfoTitle = styled.div`
     font-size: 18px;
     font-weight: bold;
     align-items: center;
@@ -401,17 +425,6 @@ const InfoText = styled.p`
     margin-bottom: 2%;
 `;
 
-const ProjectSkillBox = styled.div`
-    /* background-color: wheat; */
-    margin: 1%;
-    width: 48.5%;
-    transition: background-color 0.3s;
-
-    @media (max-width: 550px) {
-        width: 90%;
-    }
-`;
-
 const SkillDot = styled(BsDot)`
     width: 20px;
     height: 20px;
@@ -423,7 +436,18 @@ const SkillDot = styled(BsDot)`
     }
 `;
 
-const ProjectText = styled.h1`
+const ProjectSkillBox = styled.div`
+    /* background-color: wheat; */
+    margin: 1%;
+    width: 48.5%;
+    transition: background-color 0.3s;
+
+    @media (max-width: 550px) {
+        width: 90%;
+    }
+`;
+
+const ProjectText = styled.div`
     color: white;
     font-size: 13.5px;
     font-weight: 300;

@@ -20,7 +20,7 @@ const scaleAnimation = keyframes`
 
 
 const App = () => {
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentpage, setcurrentpage] = useState(0);
     const [currentIndex] = useState(0);
 
     const projectData = [
@@ -49,14 +49,14 @@ const App = () => {
 
     const handleScroll = useCallback((e) => {
         const delta = e.deltaY;
-        const newPageIndex = currentPage + (delta > 0 ? 1 : -1);
+        const newPageIndex = currentpage + (delta > 0 ? 1 : -1);
 
         if (newPageIndex >= 0 && newPageIndex < sections.length) {
-            setCurrentPage(newPageIndex);
+            setcurrentpage(newPageIndex);
             scrollToSection(newPageIndex);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage]);
+    }, [currentpage]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -82,7 +82,7 @@ const App = () => {
                 <Section
                     key={section.id}
                     id={section.id}
-                    className={`section ${currentPage === index ? 'active' : ''}`}
+                    className={`section ${currentpage === index ? 'active' : ''}`}
                     color={section.color}
                 >
                     {section.id === 'Start' && <Start />}
@@ -98,7 +98,7 @@ const App = () => {
                                 <Notion />
                                 <NotionText> notion </NotionText>
                             </NotionBtn>
-                            <ScrollHint  currentPage={currentPage}>
+                            <ScrollHint currentpage={currentpage}>
                                 <a href="#!" style={{textDecorationLine: 'none'}}>
                                     <span></span>
                                 </a>
@@ -230,7 +230,7 @@ const ScrollHint = styled.div`
     right: 12%;
     font-size: 1rem;
     color: white;
-    opacity: ${({ currentPage }) => (currentPage === 0 ? '0.5' : '0')};
+    opacity: ${({ currentpage }) => ((currentpage) === 0 ? '0.5' : '0')};
     transition: opacity 0.3s;
 
     a {
@@ -284,20 +284,5 @@ const ScrollHint = styled.div`
         }
     }
 `;
-
-// const ScrollText = styled.p`
-//     font-size: 12px;
-//     font-weight: bold;
-//     color: white;
-//     display: flex; /* 텍스트를 가로, 세로 중앙에 정렬하기 위해 추가 */
-//     justify-content: center; /* 가로 중앙 정렬을 위해 추가 */
-//     align-items: center; /* 세로 중앙 정렬을 위해 추가 */
-
-//     @media (max-width: 768px) {        
-//         font-size: 10px; 
-//         margin-left: -2px;
-//     }
-// `;
-
 
 export default App;
